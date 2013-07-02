@@ -64,6 +64,7 @@ typedef enum {
     //setup
     BOOL directionalLockEnabled;
     BOOL snapToGrid;
+    BOOL bounces;
     CGFloat snapToGridAnamationDuration;
     PFGridViewSelectMode selectMode;
     BOOL selectAnimated;
@@ -81,6 +82,7 @@ typedef enum {
 
 @property (nonatomic, assign) BOOL directionalLockEnabled;
 @property (nonatomic, assign) BOOL snapToGrid;
+@property (nonatomic, assign) BOOL bounces;
 @property (nonatomic, assign) CGFloat snapToGridAnamationDuration;
 @property (nonatomic, assign) PFGridViewSelectMode selectMode;
 @property (nonatomic, assign) BOOL selectAnimated;

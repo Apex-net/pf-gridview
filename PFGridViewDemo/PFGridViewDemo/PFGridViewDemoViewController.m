@@ -31,6 +31,9 @@
     [super viewDidLoad];
     demoGridView.cellHeight = 60.0f;
     demoGridView.headerHeight = 60.0f;
+    demoGridView.bounces = NO;
+    demoGridView.directionalLockEnabled = YES;
+    
     [demoGridView reloadData];
 }
 

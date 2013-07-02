@@ -17,6 +17,7 @@
 @synthesize cellHeight;
 @synthesize directionalLockEnabled;
 @synthesize snapToGrid;
+@synthesize bounces;
 @synthesize snapToGridAnamationDuration;
 @synthesize selectMode;
 @synthesize selectAnimated;

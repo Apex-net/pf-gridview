@@ -74,8 +74,9 @@
 - (void)setupScrollView:(UIScrollView *)scrollView {
     scrollView.delegate = self;
     scrollView.clipsToBounds = YES;
-    scrollView.directionalLockEnabled = owner.directionalLockEnabled;
+    scrollView.directionalLockEnabled = YES;
     scrollView.scrollEnabled = YES;
+    scrollView.bounces = NO;
     scrollView.scrollsToTop = (scrollView == gridView);
     [self addSubview:scrollView];
 }
@@ -280,7 +281,11 @@
     //remove unvisible cells and put them back to reuse queue.
     NSSet *visibleIndexPathes = [self hideUnvisibleCells:scrollView];
     //showing the new visible cells for both scrollViews
-    [self showVisibleCells:scrollView visibleIndexPathes:visibleIndexPathes];    
+    [self showVisibleCells:scrollView visibleIndexPathes:visibleIndexPathes];
+    
+    // update property
+    scrollView.directionalLockEnabled = owner.directionalLockEnabled;
+    scrollView.bounces = owner.bounces;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
