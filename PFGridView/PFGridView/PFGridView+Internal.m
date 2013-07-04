@@ -26,7 +26,7 @@
     BOOL inHeader = point.y < headerHeight;
     PFGridIndexPath *indexPath = [self indexPathForColAtPoint:point];
     if (inHeader) {
-        if (delegate && [delegate respondsToSelector:@selector(gridView:didClickHeaderAtIndexPath:)]) {
+        if (indexPath != nil && delegate && [delegate respondsToSelector:@selector(gridView:didClickHeaderAtIndexPath:)]) {
             [delegate gridView:self didClickHeaderAtIndexPath:[PFGridIndexPath indexPathForCol:indexPath.col inRow:0 inSection:indexPath.section]];
         }
         return;
@@ -36,7 +36,7 @@
             return;
         }
     }
-    if (delegate && [delegate respondsToSelector:@selector(gridView:willSelectCellAtIndexPath:)]) {
+    if (indexPath != nil && delegate && [delegate respondsToSelector:@selector(gridView:willSelectCellAtIndexPath:)]) {
         if (![delegate gridView:self willSelectCellAtIndexPath:indexPath]) {
             return;
         }
@@ -44,7 +44,7 @@
     
     PFGridIndexPath *oldSelectedCellIndexPath = [selectedCellIndexPath retain];
 
-    [self selectCellAtIndexPath:indexPath animated:selectAnimated scrollPosition:PFGridViewScrollPositionNone];
+    if (indexPath != nil) [self selectCellAtIndexPath:indexPath animated:selectAnimated scrollPosition:PFGridViewScrollPositionNone];
 
     if (oldSelectedCellIndexPath) {
         if (delegate && [delegate respondsToSelector:@selector(gridView:didDeselectCellAtIndexPath:)]) {
@@ -54,7 +54,7 @@
         oldSelectedCellIndexPath = nil;
     }
     
-    if (delegate && [delegate respondsToSelector:@selector(gridView:didSelectCellAtIndexPath:)]) {
+    if (indexPath != nil && delegate && [delegate respondsToSelector:@selector(gridView:didSelectCellAtIndexPath:)]) {
         [delegate gridView:self didSelectCellAtIndexPath:selectedCellIndexPath];
     }
 }
