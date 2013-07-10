@@ -37,6 +37,8 @@
 
 - (CGRect)frameForCol:(NSUInteger)col inRow:(NSUInteger)row;
 
+- (CGRect)relativeFrameForCol:(NSUInteger)col inRow:(NSUInteger)row;
+
 - (void)refreshScrollView:(UIScrollView *)scrollView;
 
 

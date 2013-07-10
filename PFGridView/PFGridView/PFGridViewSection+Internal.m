@@ -216,6 +216,20 @@
     return result;
 }
 
+- (CGRect)relativeFrameForCol:(NSUInteger)col inRow:(NSUInteger)row {
+    CGRect result = CGRectZero;
+    if ((row < numberOfRow) && (col < numberOfCol)) {
+        CGFloat originX = ((NSNumber *)[colOriginXs objectAtIndex:col]).floatValue;
+        CGFloat width = ((NSNumber *)[colWidths objectAtIndex:col]).floatValue;
+        CGFloat originY = row * owner.cellHeight + owner.headerHeight;
+        result = CGRectMake(originX, originY, width, owner.cellHeight);
+    }
+
+    result.origin.x -= gridView.contentOffset.x;
+    result.origin.y -= gridView.contentOffset.y;
+    return result;
+}
+
 - (PFGridIndexPath *)indexPathForColAtPoint:(CGPoint)point {
     NSUInteger col = numberOfCol - 1;
     for (int i = 1; i < colOriginXs.count; i++) {
