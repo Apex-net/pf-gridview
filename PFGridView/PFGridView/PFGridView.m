@@ -135,10 +135,15 @@
         } 
         return;
     } else if (scrollPosition == PFGridViewScrollPositionBottom){
-        
         int numRows = [dataSource numberOfRowsInGridView:self];
-        if ((numRows * self.cellHeight) > self.frame.size.height) {
-            for (PFGridViewSection *section in sections) {
+        if (sections.count > 0 && (numRows * self.cellHeight) > self.frame.size.height) {
+            PFGridViewSection *section = sections[0];
+            if (animated) {
+                [UIView animateWithDuration:selectAnamationDuration
+                                 animations:^{
+                                     [section scrollToOffsetY:section.gridView.contentOffset.y + self.cellHeight];
+                                 }];
+            } else {
                 [section scrollToOffsetY:section.gridView.contentOffset.y + self.cellHeight];
             }
         }
