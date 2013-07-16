@@ -134,6 +134,15 @@
             [section refreshScrollView:section.gridView];
         } 
         return;
+    } else if (scrollPosition == PFGridViewScrollPositionBottom){
+        
+        int numRows = [dataSource numberOfRowsInGridView:self];
+        if ((numRows * self.cellHeight) > self.frame.size.height) {
+            for (PFGridViewSection *section in sections) {
+                [section scrollToOffsetY:section.gridView.contentOffset.y + self.cellHeight];
+            }
+        }
+        return;
     } else {
         //TODO scrollPosition not implemented
         offsetY = indexPath.row * cellHeight;
