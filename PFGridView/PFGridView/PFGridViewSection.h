@@ -23,6 +23,9 @@
     UIScrollView *headerView;
     UIScrollView *gridView;    
 }
+
+@property (nonatomic, assign) NSUInteger numberOfRow;
+@property (nonatomic, assign) NSUInteger numberOfCol;
 @property (nonatomic, assign) PFGridView *owner;
 @property (nonatomic, assign) NSUInteger sectionIndex;
 

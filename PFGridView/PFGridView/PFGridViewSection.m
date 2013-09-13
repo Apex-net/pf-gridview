@@ -14,6 +14,8 @@
 @synthesize sectionIndex;
 @synthesize headerView;
 @synthesize gridView;
+@synthesize numberOfRow;
+@synthesize numberOfCol;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

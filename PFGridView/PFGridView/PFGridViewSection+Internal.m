@@ -23,6 +23,7 @@
     }
     numberOfRow = [dataSource numberOfRowsInGridView:owner];
     numberOfCol = [dataSource gridView:owner numberOfColsInSection:sectionIndex];
+    
     [colOriginXs removeAllObjects];
     [colWidths removeAllObjects];
     
@@ -90,6 +91,7 @@
 }
 
 - (PFGridIndexPath *)indexPathForCol:(NSUInteger)col inRow:(NSUInteger)row {
+    numberOfRow = [owner.dataSource numberOfRowsInGridView:owner];
     if (row >= numberOfRow) row = numberOfRow - 1;
     if (col >= numberOfCol) col = numberOfCol - 1;
     return [PFGridIndexPath indexPathForCol:col inRow:row inSection:sectionIndex];
