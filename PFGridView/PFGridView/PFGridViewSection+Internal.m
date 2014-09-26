@@ -52,7 +52,8 @@
 - (void)scrollToCol:(NSUInteger)col scrollPosition:(PFGridViewScrollPosition)scrollPosition {
     if (col < numberOfCol) {
         CGFloat originX = ((NSNumber *)[colOriginXs objectAtIndex:col]).floatValue;
-        gridView.contentOffset = CGPointMake(originX, gridView.contentOffset.y);
+        CGFloat magicNumber = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8") ? 110 : 0;
+        gridView.contentOffset = CGPointMake(originX - magicNumber, gridView.contentOffset.y);
     }
     //TODO: scroll style not supported yet.
 }
