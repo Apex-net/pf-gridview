@@ -31,6 +31,15 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self awakeFromNib];
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
